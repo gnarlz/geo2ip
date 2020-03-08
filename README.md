@@ -1,5 +1,5 @@
 # geo2ip
- ip2geo is an IP Address Geolocation API. 
+ geo2ip is an IP Address Geolocation API. 
  
   #### Standard Geo Lookup
   To look up all IP addresses within a radius of a given location, pass the longitude, latitude, radius (in meters) and your API key in the query string.
