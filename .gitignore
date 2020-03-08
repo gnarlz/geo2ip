@@ -1,0 +1,13 @@
+# hidden files
+.DS_Store
+.idea
+# hidden directories
+.serverless
+# files
+notes
+# directories
+node_modules
+jspm_packages
+tools
+safe
+

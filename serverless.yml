@@ -1,0 +1,38 @@
+service: geo2ip
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: v1
+  region: us-east-1
+  logs:   # enables api gateway to write logs to cloudwatch
+    restApi: true
+
+  environment:
+    GEO2IP_KEYSPACE:  geo2ip
+    REDIS_IP_ADDRESS: XXX
+    REDIS_PORT: XXX
+    REDIS_PASS: XXX
+
+package:
+  include:
+    - lib/**
+    - redis/**
+    - tools/**
+  exclude:
+    - safe/**
+    - test/**
+
+functions:
+  lookup:
+      handler: handler.lookup
+      memorySize: 512
+      events:
+        - http:
+            path: geo2ip
+            method: get
+            cors: true
+      reservedConcurrency: 100

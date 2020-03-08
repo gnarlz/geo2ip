@@ -1,0 +1,17 @@
+{
+  "MODE": "TEST",
+  "VALID_KEY": "d0ee3250-6a73-11e9-9ee1-f528bffeceb6",
+  "REVOKED_KEY":"d0ee3250-6a73-11e9-9ee1-f528bffeceb1",
+  "EXCEEDED_PLAN_LIMIT_KEY": "d0ee3250-6a73-11e9-9ee1-f528bffeceb2",
+  "EXCEEDED_RATE_LIMIT_KEY": "d0ee3250-6a73-11e9-9ee1-f528bffeceb3",
+  "PAYMENT_PAST_DUE__KEY": "d0ee3250-6a73-11e9-9ee1-f528bffeceb7",
+  "ACCOUNT_TERMINATED__KEY": "d0ee3250-6a73-11e9-9ee1-f528bffeceb8",
+  "FREE_TRIAL_ENDED_KEY": "d0ee3250-6a73-11e9-9ee1-f528bffeceb9",
+  "VALID_LON": "-89.644273",
+  "VALID_LAT": "43.110954",
+  "VALID_RADIUS": "1000",
+  "SOURCE_IP": "8.8.8.8",
+  "GEO2IP_KEYSPACE":  "GEO2IP3"
+}
+
+
