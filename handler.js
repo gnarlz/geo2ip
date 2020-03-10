@@ -2,8 +2,10 @@
 
 const validate = require('./lib/validate');
 const authorize = require('./lib/authorize');
+const ratelimit = require('./lib/ratelimit');
 const geo2ip  = require('./lib/geo2ip');
 const moment = require('moment');
+
 
 module.exports.lookup = (event, context) => {
 
@@ -21,9 +23,10 @@ module.exports.lookup = (event, context) => {
 
         Promise.all([validate.longitude(lon), validate.latitude(lat), validate.radius(radius), validate.key(key), authorize.key(key) ])
             .then((result) =>{
+                return ratelimit.limit(key, result[4], response);})
+            .then((result) =>{
                 return geo2ip.lookup(lon, lat, radius);})
             .then((result) => {
-                //console.log("JSON.stringify(result)" + JSON.stringify(result));
                 createSuccessResponse(request, response, payload, result, start);
             })
             .catch((error) => {
@@ -31,8 +34,7 @@ module.exports.lookup = (event, context) => {
                 createErrorResponse(request, response, payload, error, start);
             })
             .then((result) => {
-                // ===================  CLOUDWATCH LOGGING   ==================================
-                payload.key = key;  // we want the api key in the logs, but not in the response
+                payload.key = key;  // we want the api key in the logs
                 console.log(JSON.stringify(payload));
                 resolve(response);
             });
@@ -66,7 +68,6 @@ function setResponseHeadersCORS(response){
     };
 }
 
-
 function createErrorResponse(request, response, payload, err, start){
     payload.status = "error";
     payload.status_code = err.code;
@@ -76,16 +77,6 @@ function createErrorResponse(request, response, payload, err, start){
 
     response.statusCode = err.code;
     response.body = JSON.stringify(payload);
-
-    // TODO: bring back rate limiting
-    // key exceeded rate limit
-    /*
-    if(Number(err.code) === 429){
-        response.headers["X-RateLimit-Limit"] = err.limit ;
-        response.headers["X-RateLimit-Remaining"] = err.remaining;
-        response.headers["X-RateLimit-Retry-After"] = err.retry;
-    }
-    */
 }
 
 
