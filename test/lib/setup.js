@@ -8,8 +8,6 @@ exports.run = function() {
         Promise.all([
             setValidKey(), setRevokedKey(), setExceededPlanLimitKey(),setExceededRateLimitKey(),
             setPaymentPastDueKey(), setAccountTerminatedKey(), setFreeTrialEndedKey(), loadLocationData() ])
-
-
         .then((result) =>{
             console.log("setup.run - completed successfully");
         })
@@ -138,15 +136,4 @@ function loadLocationData(){
                 console.error("redis GEOADD - error: " + error);
             })
     });
-}
-
-function verify(){
-    const redisClientSendCommand = util.promisify(redisClient.send_command).bind(redisClient);
-    redisClientSendCommand('GET', "authorized:c0ee3250-6a73-11e9-9ee1-f528bffeceb6")
-        .then((results) => {
-            console.log("redis keys * results: " + results);
-        })
-        .catch((error) => {
-            console.error("redis keys * error: " + error);
-        })
 }
