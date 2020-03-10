@@ -82,7 +82,8 @@ describe('authorize.key',() => {
     it('valid key should return null', () => {
         return authorize.key(process.env.VALID_KEY)
             .then((data) => {
-                expect(data).to.equal(null);
+                // {"authorized":true, "message":"Account creation", "ts":"2019-11-22 11:13:29.607000", "ratelimit_max":60,"ratelimit_duration":60000}
+                expect(data).to.have.property("authorized").to.equal(true);
             })
     });
 
