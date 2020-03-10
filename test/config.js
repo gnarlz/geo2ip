@@ -4,8 +4,6 @@ const config = require('./config.json');
 const setup = require('./lib/setup');
 
 if(!process.env.MODE) {
-
-    process.env.MODE = config.MODE;
     process.env.VALID_KEY = config.VALID_KEY;
     process.env.REVOKED_KEY =config.REVOKED_KEY;
     process.env.EXCEEDED_PLAN_LIMIT_KEY = config.EXCEEDED_PLAN_LIMIT_KEY;
@@ -19,6 +17,7 @@ if(!process.env.MODE) {
     process.env.SOURCE_IP = config.SOURCE_IP;
     process.env.GEO2IP_KEYSPACE = config.GEO2IP_KEYSPACE;
 
+    console.log("==========================================================================");
     console.log("valid API key for this test: " + process.env.VALID_KEY);
     console.log("revoked API key for this test: " + process.env.REVOKED_KEY);
     console.log("exceeded plan limit API key for this test: " + process.env.EXCEEDED_PLAN_LIMIT_KEY);
@@ -31,6 +30,7 @@ if(!process.env.MODE) {
     console.log("valid radius for this test: " + process.env.VALID_RADIUS);
     console.log("source IP for this test: " + process.env.SOURCE_IP);
     console.log("geo2ip redis keyspace for this test: " + process.env.GEO2IP_KEYSPACE);
+    console.log("==========================================================================");
 
     setup.run();
 }
