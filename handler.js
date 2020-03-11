@@ -21,8 +21,10 @@ module.exports.lookup = (event, context) => {
         enrichRequest(request, event, context);
         setResponseHeadersCORS(response);   // enable CORS in api gateway when using lambda proxy integration
 
-        Promise.all([validate.longitude(lon), validate.latitude(lat), validate.radius(radius), validate.key(key), authorize.key(key) ])
-            .then(([longitudeResult, latitudeResult, radiusResult, keyResult, authorizeResult]) =>{
+        Promise.all([validate.longitude(lon), validate.latitude(lat), validate.radius(radius), validate.key(key) ])
+            .then(([longitudeResult, latitudeResult, radiusResult, keyResult]) =>{
+                return authorize.key(key);})
+            .then( (authorizeResult) =>{
                 return ratelimit.limit(key, authorizeResult, response);})
             .then((result) =>{
                 return geo2ip.lookup(lon, lat, radius);})
