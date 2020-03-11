@@ -79,7 +79,7 @@ describe('authorize.key',() => {
     });
 
 
-    it('valid key should return null', () => {
+    it('valid key should return data with property "authorized" = true', () => {
         return authorize.key(process.env.VALID_KEY)
             .then((data) => {
                 // {"authorized":true, "message":"Account creation", "ts":"2019-11-22 11:13:29.607000", "ratelimit_max":60,"ratelimit_duration":60000}
