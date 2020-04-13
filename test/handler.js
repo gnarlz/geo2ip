@@ -126,7 +126,7 @@ describe('handler.lookup',() => {
             });
     });
 
-    it('invalid key parameter (uuid) in query string should return statusCode 400 and fully formed error response', () => {
+    it('invalid key parameter (uuid) in query string should return statusCode 401 and fully formed error response', () => {
         const uuid = uuidv4();
         const context = {"awsRequestId": uuidv4()};
         const event = {queryStringParameters:{
@@ -560,7 +560,7 @@ describe('handler.lookup',() => {
             requestContext: {identity: {sourceIp: "8.8.8.8"}}, headers:{}};
         return handler.lookup(event, context)
             .then((data) => {
-                console.log("data: " + JSON.stringify(data));
+                console.log("data returned from handler.lookup: " + JSON.stringify(data));
                 expect(data).to.have.property("statusCode").to.equal(200);
                 expect(data).to.have.property("headers");
                 expect(data).to.have.property("body");

@@ -7,7 +7,6 @@ const { v4: uuidv4 } = require('uuid');
 
 
 describe('validate.longitude', () => {
-
     it('no longitude should return error', () => {
         return validate.longitude(null)
             .catch( (error) =>{
@@ -28,13 +27,11 @@ describe('validate.longitude', () => {
                 expect(data).to.equal(null);
             })
     });
-
 });
 
 
 
 describe('validate.latitude', () => {
-
     it('no latitude should return error', () => {
         return validate.latitude(null)
             .catch( (error) =>{
@@ -55,13 +52,11 @@ describe('validate.latitude', () => {
                 expect(data).to.equal(null);
             })
     });
-
 });
 
 
 
 describe('validate.radius', () => {
-
     it('no radius should return error', () => {
         return validate.radius(null)
             .catch( (error) =>{
@@ -82,13 +77,11 @@ describe('validate.radius', () => {
                 expect(data).to.equal(null);
             })
     });
-
 });
 
 
 
 describe('validate.key', () => {
-
     it('no key should return error', () => {
         return validate.key(null)
             .catch( (error) =>{
@@ -109,5 +102,4 @@ describe('validate.key', () => {
                 expect(data).to.equal(null);
             })
     });
-
 });

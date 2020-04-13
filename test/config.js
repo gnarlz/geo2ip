@@ -1,7 +1,6 @@
 'use strict'
 
 const config = require('./config.json');
-const setup = require('./lib/setup');
 
 if(!process.env.MODE) {
     process.env.VALID_KEY = config.VALID_KEY;
@@ -16,6 +15,9 @@ if(!process.env.MODE) {
     process.env.VALID_RADIUS = config.VALID_RADIUS;
     process.env.SOURCE_IP = config.SOURCE_IP;
     process.env.GEO2IP_KEYSPACE = config.GEO2IP_KEYSPACE;
+    process.env.REDIS_IP_ADDRESS = config.REDIS_IP_ADDRESS;
+    process.env.REDIS_PORT = config.REDIS_PORT;
+    process.env.REDIS_PASS = config.REDIS_PASS;
 
     console.log("==========================================================================");
     console.log("valid API key for this test: " + process.env.VALID_KEY);
@@ -30,7 +32,11 @@ if(!process.env.MODE) {
     console.log("valid radius for this test: " + process.env.VALID_RADIUS);
     console.log("source IP for this test: " + process.env.SOURCE_IP);
     console.log("geo2ip redis keyspace for this test: " + process.env.GEO2IP_KEYSPACE);
+    console.log("redis host for this test: " + process.env.REDIS_IP_ADDRESS );
+    console.log("redis port for this test: " + process.env.REDIS_PORT );
+    console.log("redis pass for this test: " + process.env.REDIS_PASS );
     console.log("==========================================================================");
 
+    const setup = require('./lib/setup');
     setup.run();
 }

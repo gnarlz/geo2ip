@@ -4,10 +4,10 @@
 # hidden directories
 .serverless
 # files
-notes
+safe/*
 # directories
 node_modules
-jspm_packages
-tools
 safe
+tools
+
 
