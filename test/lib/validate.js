@@ -7,8 +7,22 @@ const { v4: uuidv4 } = require('uuid');
 
 
 describe('validate.longitude', () => {
-    it('no longitude should return error', () => {
+    it('null longitude should return error', () => {
         return validate.longitude(null)
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No longitude included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('empty longitude should return error', () => {
+        return validate.longitude('')
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No longitude included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('undefined longitude should return error', () => {
+        return validate.longitude(undefined)
             .catch( (error) =>{
                 expect(error).to.be.an.instanceOf(Error).with.property('message', "No longitude included in the request");
                 expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
@@ -32,8 +46,22 @@ describe('validate.longitude', () => {
 
 
 describe('validate.latitude', () => {
-    it('no latitude should return error', () => {
+    it('null latitude should return error', () => {
         return validate.latitude(null)
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No latitude included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('empty latitude should return error', () => {
+        return validate.latitude('')
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No latitude included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('undefined latitude should return error', () => {
+        return validate.latitude(undefined)
             .catch( (error) =>{
                 expect(error).to.be.an.instanceOf(Error).with.property('message', "No latitude included in the request");
                 expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
@@ -57,8 +85,22 @@ describe('validate.latitude', () => {
 
 
 describe('validate.radius', () => {
-    it('no radius should return error', () => {
+    it('null radius should return error', () => {
         return validate.radius(null)
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No radius included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('empty radius should return error', () => {
+        return validate.radius('')
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No radius included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('undefined radius should return error', () => {
+        return validate.radius(undefined)
             .catch( (error) =>{
                 expect(error).to.be.an.instanceOf(Error).with.property('message', "No radius included in the request");
                 expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
@@ -82,8 +124,22 @@ describe('validate.radius', () => {
 
 
 describe('validate.key', () => {
-    it('no key should return error', () => {
+    it('null key should return error', () => {
         return validate.key(null)
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No API Key included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('empty key should return error', () => {
+        return validate.key('')
+            .catch( (error) =>{
+                expect(error).to.be.an.instanceOf(Error).with.property('message', "No API Key included in the request");
+                expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
+            })
+    });
+    it('undefined key should return error', () => {
+        return validate.key(undefined)
             .catch( (error) =>{
                 expect(error).to.be.an.instanceOf(Error).with.property('message', "No API Key included in the request");
                 expect(error).to.be.an.instanceOf(Error).with.property('code', 400);
