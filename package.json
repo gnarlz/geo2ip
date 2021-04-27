@@ -24,7 +24,7 @@
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "ratelimiter": "^3.4.1",
-    "redis": "^3.0.2",
+    "redis": "^3.1.1",
     "uuid": "^7.0.2",
     "uuid-validate": "0.0.3"
   },
